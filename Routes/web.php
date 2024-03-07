@@ -11,6 +11,8 @@
 |
 */
 
-Route::prefix('home')->group(function() {
+use App\Support\Helpers\ModuleHelper;
+
+Route::prefix(ModuleHelper::current_config('web.prefix'))->group(function () {
     Route::get('/', 'HomeController@index');
 });
