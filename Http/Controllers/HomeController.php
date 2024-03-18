@@ -6,8 +6,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class HomeController extends Controller
+class HomeController extends \App\Http\Controllers\Controller
 {
+    use ViewTrait;
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -75,5 +76,14 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+}
+
+trait ViewTrait
+{
+    public function view_index(Request $request)
+    {
+        $return = ['view' => 'index'];
+        return $this->view($return);
     }
 }
